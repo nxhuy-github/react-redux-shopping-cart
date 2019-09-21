@@ -33,11 +33,11 @@ class ItemDetails extends Component {
                   />
                 </Media.Left>
                 <Media.Body>
-                  <p>Essential by OFM ESS 3085 Gaming Chair, Rose</p>
+                  <p>Essential by OFM ESS 3085 Racing Style Leather Gaming Chair, Rose</p>
                   <Row className="show-grid">
                     <Col md={6}>
                       <strong> {`$${this.props.price}`} </strong>
-                      <hr />
+                      <br />
                       <strong className="price-strike" > {`$${this.props.price}`} </strong>
                     </Col>
                     <Col md={6}> Qty: 1 </Col>

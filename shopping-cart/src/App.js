@@ -6,6 +6,7 @@ import PickupSavings from './components/PickupSavings/PickupSavings'
 import TaxesFees from './components/TaxesFees/TaxesFees'
 import EstimatedTotal from './components/EstimatedTotal/EstimatedTotal'
 import ItemDetails from './components/ItemDetails/ItemDetails'
+import PromoCodeDiscount from './components/PromoCode/PromoCode'
 
 class App extends React.Component {
   constructor() {
@@ -26,7 +27,9 @@ class App extends React.Component {
           <TaxesFees taxes={this.state.taxes.toFixed(2)} /> 
           <hr />
           <EstimatedTotal price={this.state.estimatedTotal.toFixed(2)} />
-          <ItemDetails price={0} />
+          <ItemDetails price={this.state.estimatedTotal.toFixed(2)} />
+          <hr />
+          <PromoCodeDiscount />
         </Grid>
       </div>
     );

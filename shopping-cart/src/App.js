@@ -7,6 +7,8 @@ import TaxesFees from './components/TaxesFees/TaxesFees'
 import EstimatedTotal from './components/EstimatedTotal/EstimatedTotal'
 import ItemDetails from './components/ItemDetails/ItemDetails'
 import PromoCodeDiscount from './components/PromoCode/PromoCode'
+import { connect } from 'react-redux'
+import { handleChange } from './actions/promoCodeAction'
 
 class App extends React.Component {
   constructor() {
@@ -32,6 +34,20 @@ class App extends React.Component {
     )
   }
 
+  giveDiscountHandler = () => {
+    if(this.props.promoCode === 'DISCOUNT') {
+      this.setState({
+        estimatedTotal: this.state.estimatedTotal * 0.9
+      },
+      () => {
+        this.setState({
+          disablePromoButton: true
+        })
+      } 
+      )
+    }
+  }
+
   render() {
     return (
       <div className="container">
@@ -44,7 +60,7 @@ class App extends React.Component {
           <ItemDetails price={this.state.estimatedTotal.toFixed(2)} />
           <hr />
           <PromoCodeDiscount 
-            giveDiscount={() => {this.giveDiscountHandler()}}
+            giveDiscount={this.giveDiscountHandler}
             isDisabled={this.state.disablePromoButton}
           />
         </Grid>
@@ -53,4 +69,8 @@ class App extends React.Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  promoCode: state.promoCode.value
+})
+
+export default connect(mapStateToProps, {handleChange})(App);

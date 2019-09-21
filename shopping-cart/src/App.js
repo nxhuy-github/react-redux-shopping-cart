@@ -1,26 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
+import Grid from 'react-bootstrap/lib/Grid'
 import './App.css';
+import SubTotal from './components/Subtotal/Subtotal'
+import PickupSavings from './components/PickupSavings/PickupSavings'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      total: 100,
+      pickupSavings: -3.85
+    }
+  }
+  render() {
+    return (
+      <div className="container">
+        <Grid className="purchase-card">
+          <SubTotal price={this.state.total.toFixed(2)} />
+          <PickupSavings price={this.state.pickupSavings} />
+        </Grid>
+      </div>
+    );
+  }
 }
 
 export default App;
